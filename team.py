@@ -25,6 +25,8 @@ class Team:
     
     def stats(self):
         for hero in self.heroes:
+            if hero.deaths == 0:
+                hero.deaths = 1
             kd = hero.kills / hero.deaths
             print(f"{hero.name} Kill/Deaths: {kd}")
 
@@ -55,3 +57,9 @@ class Team:
             elif random_hero <=0 and random_opp <= 0:
                 living_opponents.remove(random_opp)
                 living_heroes.remove(random_hero)
+        if len(living_heroes) <= 0:
+            print('Team two wins!')
+        elif len(living_opponents) <= 0:
+            print('Team one wins!')
+        elif len(living_opponents) <= 0 and len(living_heroes) <= 0:
+            print('ITS A DRAW!')
